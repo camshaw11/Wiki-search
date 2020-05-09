@@ -1,6 +1,11 @@
 const postsContainer = document.getElementById('posts-container');
 const input = document.querySelector('.input');
 const btn = document.getElementById('submit-button');
+const title = document.querySelector('.title');
+const loading = document.querySelector('.loader');
+const searchWrapper = document.querySelector('.search-wrapper');
+
+
 // const randomBtn = document.getElementById('random-article');
 
 input.addEventListener('keypress', enterPressed);
@@ -23,10 +28,29 @@ function user() {
     if(searchQuery == "") {
         return;
     } else {
-        showResults(searchQuery);
+        showLoading(searchQuery);
+        title.innerHTML = "Search";        
+        // showResults(searchQuery);
         input.value = "";
         return; 
     }   
+}
+
+// Show loader while search results are loading
+function showLoading(searchQuery) {
+    loading.classList.add('show');
+    // input.classList.add('hide');
+    searchWrapper.classList.add('hide');
+
+    setTimeout(() => {
+        loading.classList.remove('show');
+
+        setTimeout(() => {
+            showResults(searchQuery);   
+            // searchWrapper.classList.remove('hide');
+
+        }, 300)
+    }, 1000);
 }
 
 function showResults(searchQuery) {
@@ -75,28 +99,16 @@ function fetchMeUrl(url) {
 
             postsContainer.appendChild(postEl);
         })
-        console.log(searchData);
-        console.log(postsContainer.childNodes);
+        searchWrapper.classList.remove('hide');
+
+        // console.log(searchData);
+        // console.log(postsContainer.childNodes);
 
     })
     // throw an error if no response from url
     .catch(function(error){
         console.log(error);
-        const title = document.querySelector('.title');
         title.innerHTML = "No results found, try again";
+        searchWrapper.classList.remove('hide');
     });
 }
-
-// Show loader and fetch more posts 
-// function showLoading() {
-//     loading.classList.add('show');
-
-//     setTimeout(() => {
-//         loading.classList.remove('show');
-
-//         setTimeout(() => {
-//             page++;
-//             showPosts();
-//         }, 300)
-//     }, 1000);
-// }
