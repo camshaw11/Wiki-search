@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wikipedia viewer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="search-box">
+            <h1 class="search-text"><code>Search<span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span></code></h1>
+        </div>
+        <div class="input-box">
+            <input class="input" type="text">
+            <!-- <button class="button">?</button> -->
+            <input type="submit" value="?" id="submit-button">
+            <input type="submit" value="Random" id="random-article">
+        </div>
+
+        <div id="posts-container"></div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
