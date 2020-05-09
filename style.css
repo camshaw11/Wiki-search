@@ -151,7 +151,6 @@ input:focus, textarea:focus, select:focus{
     animation-delay: 0.2s;
 }
 
-
 @keyframes bounce {
     0%,
     100% {

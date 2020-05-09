@@ -6,7 +6,7 @@ const title = document.querySelector('.title');
 const loading = document.querySelector('.loader');
 const searchWrapper = document.querySelector('.search-wrapper');
 
-console.log("Designed & Developed by me (Cameron Shaw)");
+console.log("Designed & Developed by me (Cameron Shaw)!");
 
 
 // listen for keypress and clicks from user
