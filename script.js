@@ -1,11 +1,11 @@
 const postsContainer = document.getElementById('posts-container');
 const input = document.querySelector('.input');
 const btn = document.getElementById('submit-button');
-const randomBtn = document.getElementById('random-article');
+// const randomBtn = document.getElementById('random-article');
 
 input.addEventListener('keypress', enterPressed);
 btn.addEventListener('click', user);
-randomBtn.addEventListener('click', getRandomArticle);
+// randomBtn.addEventListener('click', getRandomArticle);
 
 
 function enterPressed() {
@@ -20,8 +20,9 @@ function user() {
     }
 
     let searchQuery = input.value; 
-    if(searchQuery == "") { return; }
-    else {
+    if(searchQuery == "") {
+        return;
+    } else {
         showResults(searchQuery);
         input.value = "";
         return; 
@@ -79,9 +80,12 @@ function fetchMeUrl(url) {
 
     })
     // throw an error if no response from url
-    .catch(function(error){console.log(error);});
+    .catch(function(error){
+        console.log(error);
+        const title = document.querySelector('.title');
+        title.innerHTML = "No results found, try again";
+    });
 }
-
 
 // Show loader and fetch more posts 
 // function showLoading() {

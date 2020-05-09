@@ -29,8 +29,8 @@ h1 {
 }
 
 .search-box, .input-box {
-    width: 30%;
-    height: 30px;
+    /* width: 40vw; */
+    /* height: 50px; */
     /* border: 2px solid #7aea72; */
     display: flex;
     justify-content: center;
@@ -90,7 +90,10 @@ input:focus, textarea:focus, select:focus{
     color: #7aea72;
 }
 
-#submit-button, #random-article {
+#posts-container {
+    color: #7aea72;
+}
+#submit-button, #random-article, .random-btn {
     background-color: black;
     color: #7aea72;
     border: 2px solid #7aea72;
@@ -104,4 +107,11 @@ input:focus, textarea:focus, select:focus{
 
 #submit-button:active, #random-article:active {
     background-color: #a7a7a7;
+}
+
+.random-btn {
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    border: none
 }
