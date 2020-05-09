@@ -20,6 +20,11 @@ body {
     align-items: center;
     flex-direction: column;
     background-color: black;
+    background-image: radial-gradient(
+        #7aea72 0.5px,
+        transparent 0.5px
+    );
+    background-size: 10px 10px;
 }
 
 h1 {
@@ -99,14 +104,14 @@ input:focus, textarea:focus, select:focus{
     color: #7aea72;
     border: 2px solid #7aea72;
     padding: 6px 8px;
-    margin-left: 4px;
+    margin-left: 8px;
 }
 
-#submit-button:hover, #random-article:hover {
+#submit-button:hover, .random-btn:hover {
     background-color: #232323;
 }
 
-#submit-button:active, #random-article:active {
+#submit-button:active, .random-btn:active {
     background-color: #a7a7a7;
 }
 
@@ -161,3 +166,10 @@ input:focus, textarea:focus, select:focus{
     }
 
 }
+
+::selection {
+    background: #a7a7a7; /* WebKit/Blink Browsers */
+  }
+  ::-moz-selection {
+    background: #a7a7a7; /* Gecko Browsers */
+  }
