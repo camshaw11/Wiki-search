@@ -1,3 +1,4 @@
+// elements required in global scope
 const postsContainer = document.getElementById('posts-container');
 const input = document.querySelector('.input');
 const btn = document.getElementById('submit-button');
@@ -5,14 +6,14 @@ const title = document.querySelector('.title');
 const loading = document.querySelector('.loader');
 const searchWrapper = document.querySelector('.search-wrapper');
 
+console.log("Designed & Developed by me (Cameron Shaw)");
 
-// const randomBtn = document.getElementById('random-article');
 
+// listen for keypress and clicks from user
 input.addEventListener('keypress', enterPressed);
 btn.addEventListener('click', user);
-// randomBtn.addEventListener('click', getRandomArticle);
 
-
+// make sure key pressed is the Enter key
 function enterPressed() {
     if (event.key === "Enter") {
         btn.click();
@@ -20,35 +21,35 @@ function enterPressed() {
 }
 
 function user() {
+    // if search has already been called remove divs and start over
     if(postsContainer.childNodes[0]){ 
         postsContainer.querySelectorAll('*').forEach(n => n.remove()) 
     }
 
     let searchQuery = input.value; 
+    // if input box is empty return
     if(searchQuery == "") {
         return;
     } else {
         showLoading(searchQuery);
         title.innerHTML = "Search";        
-        // showResults(searchQuery);
         input.value = "";
         return; 
     }   
 }
 
-// Show loader while search results are loading
+// show loader while search results are loading
 function showLoading(searchQuery) {
+
+    // hide content and show loader
     loading.classList.add('show');
-    // input.classList.add('hide');
     searchWrapper.classList.add('hide');
 
+    // remove loader and then show loaded content
     setTimeout(() => {
         loading.classList.remove('show');
-
         setTimeout(() => {
             showResults(searchQuery);   
-            // searchWrapper.classList.remove('hide');
-
         }, 300)
     }, 1000);
 }
@@ -56,7 +57,8 @@ function showLoading(searchQuery) {
 function showResults(searchQuery) {
     var url = "https://en.wikipedia.org/w/api.php"; 
     let userInput = input;
-    
+
+    // different pieces that make up the url to fetch
     var params = {
         action: "query",
         prop: "extracts",
@@ -69,9 +71,11 @@ function showResults(searchQuery) {
         format: "json"
     };
     url = url + "?origin=*";
-    
+
+    // set users search query to parameter in url
     params.gsrsearch = searchQuery;
 
+    // join params into the url string
     Object.keys(params).forEach(function(key){url += "&" + key + "=" + params[key];});
     
     fetchMeUrl(url);
@@ -100,9 +104,6 @@ function fetchMeUrl(url) {
             postsContainer.appendChild(postEl);
         })
         searchWrapper.classList.remove('hide');
-
-        // console.log(searchData);
-        // console.log(postsContainer.childNodes);
 
     })
     // throw an error if no response from url
